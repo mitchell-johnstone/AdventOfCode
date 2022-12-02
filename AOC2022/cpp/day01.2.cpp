@@ -42,13 +42,26 @@ const int MOD = 1e9 + 7;
 
 // -------------------MAIN CODE-------------------//
 int main(){
-    ifstream file("day01-1-input.txt");
+    ifstream file("day01.input");
     string line;
-    int res = 0;
+    int res[3] = {0,0,0};
     int cur = 0;
     while(getline(file,line)){
         if(line == ""){
-            res = max(res,cur);
+            cout<<cur<<" "<<res[0]<<" "<<res[1]<<" "<<res[2]<<nn;
+            if(cur > res[2]){
+                res[2] = cur;
+            }
+            if(res[2] > res[1]){
+                res[2] ^= res[1];
+                res[1] ^= res[2];
+                res[2] ^= res[1];
+            }
+            if(res[1] > res[0]){
+                res[1] ^= res[0];
+                res[0] ^= res[1];
+                res[1] ^= res[0];
+            }
             cur = 0;
         } else {
             stringstream s;
@@ -58,7 +71,21 @@ int main(){
             cur += tmp;
         }
     }
-    cout<<max(res,cur)<<nn;
+    if(cur > res[2]){
+        res[2] = cur;
+    }
+    if(res[2] > res[1]){
+        res[2] ^= res[1];
+        res[1] ^= res[2];
+        res[2] ^= res[1];
+    }
+    if(res[1] > res[0]){
+        res[1] ^= res[0];
+        res[0] ^= res[1];
+        res[1] ^= res[0];
+    }
+    cout<<res[0]+res[1]+res[2]<<nn;
+    return 0;
     return 0;
 }
 
