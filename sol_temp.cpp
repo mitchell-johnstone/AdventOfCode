@@ -7,6 +7,7 @@ typedef long double ld;
 #define nn '\n'
 #define pb push_back
 #define mp make_pair
+#define all(x) (x).begin(), (x).end()
 
 // collection shorthand
 #define V vector
