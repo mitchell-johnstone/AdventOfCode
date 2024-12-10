@@ -16,19 +16,18 @@ if [ ! -f $file ]
 then
     cat > ./AOC$1/sol_$2.zig << EOL
 const std = @import("std");
-const print = std.debug.print;
 const data = @embedFile("in_$2.txt");
 
 pub fn main() !void {
-    var lines = std.mem.tokenize(u8, data, "\n");
     std.debug.print("AOC $1 sol $2\n-------------\n", .{});
 
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
     const allocator = arena.allocator();
 
+    var lines = std.mem.tokenize(u8, data, "\n");
 }
 EOL
 fi
 
-nvim ./AOC$1/sol_$2.zig ./AOC$1/ex_$2.txt -O +12
+pushd ./AOC$1 && nvim sol_$2.zig ex_$2.txt -O +12 && popd
