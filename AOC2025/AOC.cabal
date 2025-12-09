@@ -103,6 +103,25 @@ executable day5
                        -Wredundant-constraints
                        -rtsopts
 
+
+executable day6
+  hs-source-dirs:      src
+  main-is:             day6.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       split
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints
+                       -rtsopts
+
+
 source-repository head
   type:     git
   location: https://github.com/githubuser/AOC
